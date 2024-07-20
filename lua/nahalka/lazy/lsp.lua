@@ -8,6 +8,8 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/nvim-cmp",
+		"L3MON4D3/LuaSnip",
+		"saadparwaiz1/cmp_luasnip",
 		"j-hui/fidget.nvim",
 	},
 	config = function()
@@ -24,6 +26,7 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"pyright",
+				"gopls",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -51,6 +54,11 @@ return {
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 		cmp.setup({
+			snippet = {
+				expand = function(args)
+					require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+				end,
+			},
 			mapping = cmp.mapping.preset.insert({
 				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
@@ -58,6 +66,7 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(),
 			}),
 			sources = cmp.config.sources({
+				{ name = "luasnip" },
 				{ name = "nvim_lsp" },
 			}, {
 				{ name = "buffer" },
@@ -74,11 +83,6 @@ return {
 				header = "",
 				prefix = "",
 			},
-			virtual_text = true,
-			signs = true,
-			underline = true,
-			update_in_insert = false,
-			severity_sort = true,
 		})
 	end,
 }
