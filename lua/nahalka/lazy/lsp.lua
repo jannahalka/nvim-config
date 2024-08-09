@@ -27,6 +27,7 @@ return {
 				"lua_ls",
 				"pyright",
 				"gopls",
+				"tsserver",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
