@@ -1,9 +1,10 @@
 return {
-	"folke/tokyonight.nvim",
+	"rose-pine/neovim",
+	name = "rose-pine",
 	lazy = false,
 	priority = 1000,
 	config = function()
-		vim.cmd([[colorscheme tokyonight-night]])
+		vim.cmd([[colorscheme rose-pine]])
 		vim.cmd("highlight EndOfBuffer guifg=#444b6a guibg=NONE")
 	end,
 	opts = {},
