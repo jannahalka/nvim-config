@@ -11,6 +11,7 @@ return {
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"j-hui/fidget.nvim",
+		"rafamadriz/friendly-snippets",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -25,9 +26,9 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",
-				"pyright",
 				"gopls",
 				"tsserver",
+				"pylsp",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -50,8 +51,24 @@ return {
 						},
 					})
 				end,
+				["pylsp"] = function()
+					require("lspconfig").pylsp.setup({
+						capabilities = capabilities,
+						settings = {
+							pylsp = {
+								plugins = {
+									jedi_completion = {
+										enabled = true,
+										include_params = true,
+									},
+								},
+							},
+						},
+					})
+				end,
 			},
 		})
+		require("luasnip.loaders.from_vscode").lazy_load()
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 		cmp.setup({

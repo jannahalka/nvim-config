@@ -5,7 +5,6 @@ return {
 	priority = 1000,
 	config = function()
 		vim.cmd([[colorscheme rose-pine]])
-		vim.cmd("highlight EndOfBuffer guifg=#444b6a guibg=NONE")
 	end,
 	opts = {},
 }
