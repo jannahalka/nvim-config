@@ -22,6 +22,16 @@ return {
 			vim.lsp.protocol.make_client_capabilities(),
 			cmp_lsp.default_capabilities()
 		)
+		local lspconfig = require("lspconfig")
+		lspconfig.sourcekit.setup({
+			capabilities = {
+				workspace = {
+					didChangeWatchedFiles = {
+						dynamicRegistration = true,
+					},
+				},
+			},
+		})
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
