@@ -4,6 +4,7 @@ require("conform").setup({
 		go = { "goimports", "gofmt" },
 		-- Conform will run multiple formatters sequentially
 		python = { "black" },
+		c = { "clang_format" },
 	},
 })
 

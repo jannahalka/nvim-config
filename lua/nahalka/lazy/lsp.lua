@@ -38,7 +38,8 @@ return {
 				"lua_ls",
 				"gopls",
 				"tsserver",
-				"pylsp",
+				"pyright",
+				"clangd",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -48,8 +49,7 @@ return {
 				end,
 
 				["lua_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.lua_ls.setup({
+					require("lspconfig").lua_ls.setup({
 						capabilities = capabilities,
 						settings = {
 							Lua = {
@@ -61,20 +61,11 @@ return {
 						},
 					})
 				end,
-				["pylsp"] = function()
-					require("lspconfig").pylsp.setup({
-						capabilities = capabilities,
-						settings = {
-							pylsp = {
-								plugins = {
-									jedi_completion = {
-										enabled = true,
-										include_params = true,
-									},
-								},
-							},
-						},
-					})
+				["pyright"] = function()
+					require("lspconfig").pyright.setup({})
+				end,
+				["clangd"] = function()
+					require("lspconfig").clangd.setup({})
 				end,
 			},
 		})
