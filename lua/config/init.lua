@@ -1,6 +1,6 @@
-require("nahalka.set")
-require("nahalka.remap")
-require("nahalka.lazy_init")
+require("config.set")
+require("config.remap")
+require("config.lazy_init")
 
 local augroup = vim.api.nvim_create_augroup
 local Nahalka = augroup("nahalka", {})

@@ -13,6 +13,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	spec = "nahalka.lazy",
+	spec = "config.plugins",
 	change_detection = { notify = false },
 })

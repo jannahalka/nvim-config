@@ -1,1 +1,1 @@
-require("nahalka")
+require("config")
