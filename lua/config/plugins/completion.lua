@@ -10,6 +10,20 @@ return {
         nerd_font_variant = 'mono'
       },
       signature = { enabled = true },
+      completion = {
+        documentation = { auto_show = false },
+        menu = {
+          draw = {
+            components = {
+              label_description = {
+                text = function(ctx)
+                  return ctx.label_description ~= '' and ctx.label_description or ctx.item.detail
+                end,
+              },
+            },
+          },
+        }
+      },
     },
   }
 }
